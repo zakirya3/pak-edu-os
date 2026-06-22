@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pak Edu OS</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f7f0;color:#1a2e1a;}
+nav{background:#1a5c2a;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-logo{width:42px;height:42px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#1a5c2a;line-height:1.1;text-align:center;}
+.nav-title{color:#fff;font-size:18px;font-weight:700;}
+.nav-title span{color:#a8d8a8;font-size:12px;display:block;font-weight:400;}
+.nav-links{display:flex;gap:20px;}
+.nav-links a{color:#c8e6c9;text-decoration:none;font-size:14px;}
+.nav-links a:hover{color:#fff;}
+.hero{background:#1a5c2a;color:#fff;padding:64px 2rem 72px;text-align:center;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:5px 16px;border-radius:20px;font-size:12px;color:#d0f0d0;margin-bottom:18px;}
+.hero h1{font-size:44px;font-weight:800;margin-bottom:10px;line-height:1.15;}
+.hero h1 span{color:#a8e6a8;}
+.hero p{font-size:17px;color:#c8e6c9;max-width:580px;margin:0 auto 30px;line-height:1.6;}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:#fff;color:#1a5c2a;padding:13px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-primary:hover{background:#e8f5e9;}
+.btn-secondary{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);padding:11px 24px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);}
+.stats-bar{background:#fff;border-bottom:1px solid #e0e8dc;display:flex;justify-content:center;padding:18px 2rem;gap:44px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-size:26px;font-weight:800;color:#1a5c2a;}
+.stat-label{font-size:11px;color:#6b7c6b;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
+section{padding:56px 2rem;}
+.section-header{text-align:center;margin-bottom:44px;}
+.section-tag{display:inline-block;background:#e8f5e9;color:#2d7a3a;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;}
+.section-header h2{font-size:32px;font-weight:800;color:#1a2e1a;margin-bottom:8px;}
+.section-header p{font-size:15px;color:#4a6b4a;max-width:540px;margin:0 auto;}
+.features-bg{background:#fff;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;max-width:1100px;margin:0 auto;}
+.feature-card{background:#f4f7f0;border:1px solid #d4e8d4;border-radius:12px;padding:22px;}
+.feature-icon{width:46px;height:46px;border-radius:10px;background:#1a5c2a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;}
+.feature-card h3{font-size:15px;font-weight:700;margin-bottom:7px;color:#1a2e1a;}
+.feature-card p{font-size:13px;color:#4a6b4a;line-height:1.6;}
+.tools-bg{background:#f4f7f0;}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;max-width:1100px;margin:0 auto;}
+.tool-card{background:#fff;border:1px solid #d4e8d4;border-radius:12px;padding:18px;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s;}
+.tool-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,92,42,0.12);}
+.tool-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+.tool-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.tool-meta h3{font-size:14px;font-weight:700;color:#1a2e1a;margin-bottom:3px;}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:0.4px;}
+.tag-math{background:#fff3e0;color:#b35000;}
+.tag-science{background:#e8f5e9;color:#1b5e20;}
+.tag-lang{background:#e3f2fd;color:#0d47a1;}
+.tag-geo{background:#fce4ec;color:#880e4f;}
+.tag-art{background:#f3e5f5;color:#4a148c;}
+.tag-office{background:#e8eaf6;color:#1a237e;}
+.tag-code{background:#e0f2f1;color:#004d40;}
+.tag-read{background:#fff8e1;color:#c57f00;}
+.tool-desc{font-size:13px;color:#4a6b4a;line-height:1.55;flex:1;margin-bottom:12px;}
+.tool-download{display:inline-flex;align-items:center;gap:6px;background:#1a5c2a;color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;align-self:flex-start;transition:background 0.2s;}
+.tool-download:hover{background:#145023;}
+
+/* INSTALL SECTION */
+.install-bg{background:#fff;}
+.install-flow{display:flex;align-items:flex-start;justify-content:center;gap:0;max-width:980px;margin:0 auto 52px;flex-wrap:wrap;}
+.flow-step{display:flex;flex-direction:column;align-items:center;flex:1;min-width:110px;}
+.flow-circle{width:52px;height:52px;border-radius:50%;background:#1a5c2a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin-bottom:8px;flex-shrink:0;}
+.flow-label{font-size:12px;font-weight:700;color:#1a5c2a;text-align:center;text-transform:uppercase;letter-spacing:0.5px;}
+.flow-arrow{font-size:22px;color:#a8d8a8;margin-top:14px;flex-shrink:0;}
+.install-steps{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.install-step{display:flex;gap:0;position:relative;}
+.step-left{display:flex;flex-direction:column;align-items:center;width:64px;flex-shrink:0;}
+.step-num{width:48px;height:48px;border-radius:50%;background:#1a5c2a;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;z-index:1;}
+.step-line{flex:1;width:2px;background:#d4e8d4;margin:0 auto;}
+.install-step:last-child .step-line{display:none;}
+.step-content{background:#f4f7f0;border:1px solid #d4e8d4;border-radius:12px;padding:20px 22px;margin-bottom:20px;margin-left:16px;flex:1;}
+.step-content h3{font-size:16px;font-weight:700;color:#1a2e1a;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.step-content h3 i{color:#1a5c2a;font-size:18px;}
+.step-content p{font-size:14px;color:#4a6b4a;line-height:1.65;margin-bottom:10px;}
+.step-content p:last-child{margin-bottom:0;}
+.step-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.tool-pill{display:inline-flex;align-items:center;gap:5px;background:#e8f5e9;color:#1b5e20;border:1px solid #c8e6c9;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;}
+.tool-pill:hover{background:#c8e6c9;}
+.step-note{display:flex;align-items:flex-start;gap:8px;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:13px;color:#795b00;}
+.step-note i{font-size:16px;color:#f9a825;flex-shrink:0;margin-top:1px;}
+.step-note.danger{background:#fdecea;border-color:#f5c6c6;color:#7a1e1e;}
+.step-note.danger i{color:#e53935;}
+.cmd-block{background:#1a2e1a;color:#a8e6a8;padding:12px 16px;border-radius:8px;font-family:monospace;font-size:13px;margin-top:10px;overflow-x:auto;}
+.cmd-block span{color:#fff;}
+.key-badge{display:inline-block;background:#1a2e1a;color:#a8e6a8;border-radius:4px;padding:1px 7px;font-family:monospace;font-size:12px;font-weight:700;}
+.boot-keys{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.boot-key-card{background:#f4f7f0;border:1px solid #d4e8d4;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;color:#1a2e1a;}
+
+.about-bg{background:#f4f7f0;}
+.about-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+.about-text h2{font-size:28px;font-weight:800;color:#1a2e1a;margin-bottom:14px;}
+.about-text p{font-size:14px;color:#4a6b4a;line-height:1.7;margin-bottom:10px;}
+.about-card{background:#fff;border:1px solid #d4e8d4;border-radius:16px;padding:26px;text-align:center;}
+.os-logo-big{width:76px;height:76px;background:#1a5c2a;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:13px;font-weight:800;color:#fff;line-height:1.2;text-align:center;}
+.about-card h3{font-size:17px;font-weight:700;color:#1a2e1a;margin-bottom:7px;}
+.about-card p{font-size:13px;color:#4a6b4a;}
+.spec-list{margin-top:14px;text-align:left;}
+.spec-item{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #d4e8d4;font-size:13px;}
+.spec-item:last-child{border-bottom:none;}
+.spec-key{color:#4a6b4a;}
+.spec-val{color:#1a2e1a;font-weight:600;}
+.cta-section{background:#1a5c2a;color:#fff;text-align:center;padding:64px 2rem;}
+.cta-section h2{font-size:32px;font-weight:800;margin-bottom:10px;}
+.cta-section p{font-size:15px;color:#c8e6c9;margin-bottom:28px;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#1a5c2a;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.2s;}
+.cta-btn:hover{background:#e8f5e9;}
+footer{background:#0e3a18;color:#a8d8a8;text-align:center;padding:26px 2rem;font-size:13px;}
+footer strong{color:#fff;}
+footer p{margin-top:5px;color:#6a9c6a;font-size:12px;}
+.flag-strip{height:6px;background:linear-gradient(to right,#01411C 33%,#FFFFFF 33%,#FFFFFF 66%,#01411C 66%);}
+@media(max-width:640px){
+  .hero h1{font-size:28px;}
+  .about-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .stats-bar{gap:24px;}
+  .install-flow{gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<div class="flag-strip"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">PAK<br>EDU</div>
+    <div class="nav-title">Pak Edu OS <span>Education for Every Child</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#tools">Tools</a>
+    <a href="#install">Install</a>
+    <a href="#about">About</a>
+    <a href="#download">Download</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🇵🇰 Built for Pakistani Schools · Free &amp; Open Source</div>
+  <h1>Pak Edu OS<br><span>Learn. Grow. Succeed.</span></h1>
+  <p>A free educational operating system based on Xubuntu 24 LTS, packed with open-source learning tools for students across Pakistan.</p>
+  <div class="hero-actions">
+    <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="btn-primary">
+      <i class="ti ti-download"></i> Download Pak Edu OS
+    </a>
+    <a href="#install" class="btn-secondary">
+      <i class="ti ti-list-check"></i> How to Install
+    </a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Educational Tools</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Free &amp; Open Source</div></div>
+  <div class="stat"><div class="stat-num">Xubuntu 24</div><div class="stat-label">LTS Base</div></div>
+  <div class="stat"><div class="stat-num">Urdu</div><div class="stat-label">Language Support</div></div>
+</div>
+
+<!-- FEATURES -->
+<section class="features-bg" id="features">
+  <div class="section-header">
+    <div class="section-tag">Why Pak Edu OS?</div>
+    <h2>Designed for Pakistani Classrooms</h2>
+    <p>Lightweight, fast, and loaded with everything students need — no internet required after installation.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-brand-ubuntu"></i></div>
+      <h3>Xubuntu 24 LTS Base</h3>
+      <p>Built on stable Xubuntu 24 LTS — lightweight and perfect for older school computers with minimal RAM.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-currency-dollar-off"></i></div>
+      <h3>Completely Free</h3>
+      <p>No licenses, no subscriptions, no hidden fees. Every tool included is fully free and open-source forever.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-world"></i></div>
+      <h3>Urdu &amp; English</h3>
+      <p>Full support for Urdu and English interfaces, accessible for students in all provinces of Pakistan.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-wifi-off"></i></div>
+      <h3>Works Offline</h3>
+      <p>All educational tools run offline after installation — ideal for schools in remote areas with no internet.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-cpu"></i></div>
+      <h3>Low Spec Friendly</h3>
+      <p>Runs smoothly on computers with as little as 1 GB RAM and older Pentium/Celeron processors.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="ti ti-school"></i></div>
+      <h3>Curriculum Aligned</h3>
+      <p>Tools curated to align with Pakistan's national curriculum from primary to higher secondary level.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-bg" id="tools">
+  <div class="section-header">
+    <div class="section-tag">Included Software</div>
+    <h2>Open-Source Educational Tools</h2>
+    <p>Every app is pre-installed and ready to use. Click any download button to get the installer.</p>
+  </div>
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#fff3e0;"><i class="ti ti-math" style="color:#b35000;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>GeoGebra</h3><span class="tag tag-math">Mathematics</span></div>
+      </div>
+      <p class="tool-desc">Interactive maths for algebra, geometry, calculus, statistics and 3D graphing. Perfect for matric and FSc students.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e8f5e9;"><i class="ti ti-atom" style="color:#1b5e20;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Avogadro</h3><span class="tag tag-science">Chemistry</span></div>
+      </div>
+      <p class="tool-desc">3D molecular editor and visualizer for chemistry education. Build molecules and explore chemical structures interactively.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e3f2fd;"><i class="ti ti-planet" style="color:#0d47a1;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Stellarium</h3><span class="tag tag-science">Astronomy</span></div>
+      </div>
+      <p class="tool-desc">A free open-source planetarium showing a realistic sky in 3D — great for science and Islamic calendar studies.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#fce4ec;"><i class="ti ti-map" style="color:#880e4f;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Marble</h3><span class="tag tag-geo">Geography</span></div>
+      </div>
+      <p class="tool-desc">A virtual globe and world atlas — explore maps, satellite views, and geographic features for Pakistan Studies.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e8eaf6;"><i class="ti ti-file-text" style="color:#1a237e;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>LibreOffice</h3><span class="tag tag-office">Office Suite</span></div>
+      </div>
+      <p class="tool-desc">Full office suite — Writer, Calc, Impress and Draw. Compatible with Microsoft Office files. Essential for every student.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e0f2f1;"><i class="ti ti-code" style="color:#004d40;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Scratch</h3><span class="tag tag-code">Coding</span></div>
+      </div>
+      <p class="tool-desc">Visual block-based programming for children. Learn coding logic through games and animations — no prior experience needed.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#fff8e1;"><i class="ti ti-book" style="color:#c57f00;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>KDE Edu Suite</h3><span class="tag tag-read">Learning</span></div>
+      </div>
+      <p class="tool-desc">Collection of educational apps: KStars, KGeography, Kanagram, KWordQuiz and more for all age groups and subjects.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#f3e5f5;"><i class="ti ti-pencil" style="color:#4a148c;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>GIMP</h3><span class="tag tag-art">Art &amp; Design</span></div>
+      </div>
+      <p class="tool-desc">Free professional image editor for art and design classes — a powerful alternative to Photoshop for creative students.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e8f5e9;"><i class="ti ti-microscope" style="color:#1b5e20;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>PhET Simulations</h3><span class="tag tag-science">Physics / Biology</span></div>
+      </div>
+      <p class="tool-desc">Interactive science simulations from University of Colorado covering physics, chemistry, biology and earth science.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e3f2fd;"><i class="ti ti-language" style="color:#0d47a1;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Anki</h3><span class="tag tag-lang">Languages</span></div>
+      </div>
+      <p class="tool-desc">Spaced repetition flashcard app for memorizing vocabulary, Quran words, historical dates and more. Works fully offline.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#fff3e0;"><i class="ti ti-calculator" style="color:#b35000;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Maxima / wxMaxima</h3><span class="tag tag-math">Mathematics</span></div>
+      </div>
+      <p class="tool-desc">Computer algebra system for symbolic maths — derivatives, integrals, equations. Excellent for FSc and university students.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <div class="tool-icon" style="background:#e0f2f1;"><i class="ti ti-terminal" style="color:#004d40;font-size:21px;"></i></div>
+        <div class="tool-meta"><h3>Thonny (Python IDE)</h3><span class="tag tag-code">Coding</span></div>
+      </div>
+      <p class="tool-desc">Beginner-friendly Python IDE with a built-in debugger — ideal for computer science students learning programming step by step.</p>
+      <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-download"><i class="ti ti-download"></i> Download</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- INSTALLATION GUIDE -->
+<section class="install-bg" id="install">
+  <div class="section-header">
+    <div class="section-tag">Installation Guide</div>
+    <h2>How to Install Pak Edu OS</h2>
+    <p>Follow these four simple steps — from downloading the ISO to running Pak Edu OS on your school computer.</p>
+  </div>
+
+  <!-- Flow overview -->
+  <div class="install-flow">
+    <div class="flow-step">
+      <div class="flow-circle"><i class="ti ti-download" style="font-size:22px;"></i></div>
+      <div class="flow-label">1. Download ISO</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step">
+      <div class="flow-circle"><i class="ti ti-usb" style="font-size:22px;"></i></div>
+      <div class="flow-label">2. Flash USB</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step">
+      <div class="flow-circle"><i class="ti ti-device-laptop" style="font-size:22px;"></i></div>
+      <div class="flow-label">3. Boot from USB</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step">
+      <div class="flow-circle"><i class="ti ti-check" style="font-size:22px;"></i></div>
+      <div class="flow-label">4. Install OS</div>
+    </div>
+  </div>
+
+  <!-- Detailed steps -->
+  <div class="install-steps">
+
+    <!-- Step 1 -->
+    <div class="install-step">
+      <div class="step-left">
+        <div class="step-num">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3><i class="ti ti-download"></i> Download the ISO file</h3>
+        <p>Click the button below to download the Pak Edu OS <strong>.iso</strong> file from our Google Drive. The file is approximately <strong>2.5 – 3 GB</strong> in size — make sure you have enough space and a stable connection (or use a download manager like IDM).</p>
+        <div class="step-tools">
+          <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="tool-pill"><i class="ti ti-brand-google-drive"></i> Download ISO from Google Drive</a>
+        </div>
+        <div class="step-note"><i class="ti ti-info-circle"></i> You will need a USB drive of at least <strong>4 GB</strong> capacity. Back up any data on it first — it will be erased during flashing.</div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="install-step">
+      <div class="step-left">
+        <div class="step-num">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3><i class="ti ti-usb"></i> Flash the ISO to a USB drive</h3>
+        <p>Use one of the free tools below to write the ISO to your USB drive. <strong>Rufus</strong> is recommended for Windows users — it is simple and works perfectly.</p>
+        <div class="step-tools">
+          <a href="https://rufus.ie" class="tool-pill" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Rufus (Windows — recommended)</a>
+          <a href="https://www.balena.io/etcher/" class="tool-pill" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> balenaEtcher (Windows/Mac/Linux)</a>
+          <a href="https://www.ventoy.net" class="tool-pill" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Ventoy (multi-ISO USB)</a>
+        </div>
+        <p style="margin-top:12px;"><strong>Using Rufus — step by step:</strong></p>
+        <p>① Open Rufus &nbsp;→&nbsp; ② Click <em>Select</em> and choose the downloaded <code style="background:#e8f5e9;padding:1px 5px;border-radius:4px;font-size:12px;">.iso</code> file &nbsp;→&nbsp; ③ Select your USB drive under <em>Device</em> &nbsp;→&nbsp; ④ Leave partition scheme as <strong>MBR</strong> &nbsp;→&nbsp; ⑤ Click <strong>Start</strong> &nbsp;→&nbsp; ⑥ Wait for it to say <em>READY</em>.</p>
+        <div class="step-note danger"><i class="ti ti-alert-triangle"></i> All data on the USB drive will be permanently erased. Double-check you have selected the correct drive before clicking Start.</div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="install-step">
+      <div class="step-left">
+        <div class="step-num">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3><i class="ti ti-device-laptop"></i> Boot the computer from the USB drive</h3>
+        <p>Insert the USB drive into the school computer and restart it. You need to enter the <strong>Boot Menu</strong> before Windows loads. Press the correct key for your PC brand the moment the computer starts:</p>
+        <div class="boot-keys">
+          <div class="boot-key-card">Dell &nbsp;—&nbsp; <span class="key-badge">F12</span></div>
+          <div class="boot-key-card">HP &nbsp;—&nbsp; <span class="key-badge">F9</span> or <span class="key-badge">Esc</span></div>
+          <div class="boot-key-card">Lenovo &nbsp;—&nbsp; <span class="key-badge">F12</span></div>
+          <div class="boot-key-card">Acer &nbsp;—&nbsp; <span class="key-badge">F2</span> or <span class="key-badge">F12</span></div>
+          <div class="boot-key-card">Asus &nbsp;—&nbsp; <span class="key-badge">F8</span> or <span class="key-badge">Esc</span></div>
+          <div class="boot-key-card">Toshiba &nbsp;—&nbsp; <span class="key-badge">F12</span></div>
+        </div>
+        <p style="margin-top:12px;">In the boot menu, select your <strong>USB drive</strong> (it may appear as "USB Storage Device" or your USB brand name) and press <span class="key-badge">Enter</span>. The computer will start loading Pak Edu OS from the USB.</p>
+        <div class="step-note"><i class="ti ti-info-circle"></i> If the boot menu key does not work, enter BIOS (usually <span class="key-badge">Del</span> or <span class="key-badge">F2</span>) and change the boot order to put USB first, then save and restart.</div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="install-step">
+      <div class="step-left">
+        <div class="step-num">4</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <h3><i class="ti ti-settings"></i> Install Pak Edu OS</h3>
+        <p>The OS will boot into a <strong>live environment</strong> — you can try it without installing. When ready, double-click the <strong>"Install Pak Edu OS"</strong> icon on the desktop.</p>
+        <p><strong>The installer will guide you through these screens:</strong></p>
+        <p>
+          ① <strong>Language</strong> — choose Urdu or English &nbsp;→&nbsp;
+          ② <strong>Keyboard layout</strong> — select Urdu (Pakistan) or English (US) &nbsp;→&nbsp;
+          ③ <strong>Disk setup</strong> — for a fresh install choose <em>"Erase disk and install"</em>, or <em>"Install alongside"</em> to keep Windows &nbsp;→&nbsp;
+          ④ <strong>Username &amp; password</strong> — create your school account &nbsp;→&nbsp;
+          ⑤ Click <strong>Install Now</strong> and wait 10–20 minutes.
+        </p>
+        <div class="step-note danger"><i class="ti ti-alert-triangle"></i> Choosing <em>"Erase disk and install"</em> will delete all files on the computer. Back up any important data before proceeding. For school labs, a clean install is recommended.</div>
+        <p style="margin-top:12px;">When installation is complete, the computer will ask you to <strong>remove the USB and restart</strong>. Pak Edu OS will load automatically from then on.</p>
+        <div class="cmd-block"><span>First-time terminal update (optional but recommended):</span><br>sudo apt update &amp;&amp; sudo apt upgrade -y</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-bg" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2>Built for Pakistan's Future</h2>
+      <p>Pak Edu OS is a community-driven project aimed at bridging the digital education gap in Pakistan. Every child deserves access to quality learning tools, regardless of their school's budget.</p>
+      <p>Based on Xubuntu 24 LTS, it runs efficiently on donated or refurbished computers, making digital education accessible in rural areas, government schools and low-income communities across all provinces.</p>
+      <p>All software is licensed under open-source licences (GPL, MIT, Apache) and is free to use, copy and distribute without restriction.</p>
+    </div>
+    <div class="about-card">
+      <div class="os-logo-big">PAK<br>EDU<br>OS</div>
+      <h3>System Specifications</h3>
+      <p style="font-size:13px;color:#4a6b4a;margin-bottom:8px;">Recommended requirements</p>
+      <div class="spec-list">
+        <div class="spec-item"><span class="spec-key">Base OS</span><span class="spec-val">Xubuntu 24 LTS</span></div>
+        <div class="spec-item"><span class="spec-key">Architecture</span><span class="spec-val">64-bit (x86_64)</span></div>
+        <div class="spec-item"><span class="spec-key">Min. RAM</span><span class="spec-val">1 GB (2 GB recommended)</span></div>
+        <div class="spec-item"><span class="spec-key">Storage</span><span class="spec-val">20 GB minimum</span></div>
+        <div class="spec-item"><span class="spec-key">USB for install</span><span class="spec-val">4 GB minimum</span></div>
+        <div class="spec-item"><span class="spec-key">Language</span><span class="spec-val">Urdu + English</span></div>
+        <div class="spec-item"><span class="spec-key">License</span><span class="spec-val">Free / Open Source</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="download">
+  <h2>Ready to Get Started?</h2>
+  <p>Download Pak Edu OS for free and bring digital education to your school today.</p>
+  <a href="https://drive.google.com/drive/home?dmr=1&ec=wgc-drive-[module]-goto" class="cta-btn">
+    <i class="ti ti-download"></i> Download Pak Edu OS — Free
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Pak Edu OS</strong> — Education for Every Pakistani Child 🇵🇰<br>
+  Based on Xubuntu 24 LTS · All included tools are free and open-source
+  <p>© 2026 Zakirya · All Rights Reserved · Made with ❤️ for Pakistani Schools</p>
+</footer>
+
+<div class="flag-strip"></div>
+
+</body>
+</html>
